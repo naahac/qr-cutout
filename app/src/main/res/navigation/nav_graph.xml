@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.natanaelahac.canvas.menu.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_cutoutWithCornersFragment"
+            app:destination="@id/cutoutWithCornersFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_cutoutWithRoundedCornersFragment"
+            app:destination="@id/cutoutWithRoundedCornersFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.natanaelahac.canvas.rectangle.RectangleFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second"/>
+
+    <fragment
+        android:id="@+id/cutoutWithCornersFragment"
+        android:name="com.natanaelahac.canvas.corners.CutoutWithCornersFragment"
+        android:label="CutoutWithCornersFragment"
+        tools:layout="@layout/fragment_cutout_with_corners" />
+    <fragment
+        android:id="@+id/cutoutWithRoundedCornersFragment"
+        android:name="com.natanaelahac.canvas.roundedcorners.CutoutWithRoundedCornersFragment"
+        android:label="CutoutWithRoundedCornersFragment" />
+
+</navigation>

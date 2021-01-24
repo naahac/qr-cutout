@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".menu.FirstFragment"
+    tools:ignore="HardcodedText">
+
+    <Button
+        android:id="@+id/button_simple_qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Square"
+        app:layout_constraintBottom_toTopOf="@id/button_simple_with_corners"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/button_simple_with_corners"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Corners"
+        app:layout_constraintBottom_toTopOf="@+id/button_simple_with_rounded_corners"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_simple_qr" />
+
+    <Button
+        android:id="@+id/button_simple_with_rounded_corners"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rounded corners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_simple_with_corners" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
