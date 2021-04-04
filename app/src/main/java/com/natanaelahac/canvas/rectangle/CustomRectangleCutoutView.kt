@@ -39,7 +39,7 @@ class CustomRectangleCutoutView @JvmOverloads constructor(
     private val frameStrokeWidth = 2.toPx.toFloat()
 
     private val backgroundPaint = Paint().apply {
-        setARGB(80, 0, 0,0)
+        setARGB(80, 0, 0, 0)
     }
 
     private val framePaint = Paint().apply {
@@ -49,8 +49,8 @@ class CustomRectangleCutoutView @JvmOverloads constructor(
         style = Paint.Style.STROKE
     }
 
-    private lateinit var backgroundShape : Path
-    private lateinit var qrScannerShape : Path
+    private lateinit var backgroundShape: Path
+    private lateinit var qrScannerShape: Path
 
     private fun createBackgroundPath() = Path().apply {
         lineTo(right.toFloat(), 0f)
@@ -60,7 +60,7 @@ class CustomRectangleCutoutView @JvmOverloads constructor(
         fillType = Path.FillType.EVEN_ODD
     }
 
-    private fun drawQrPath() = Path().apply {
+    private fun createQrPath() = Path().apply {
         moveTo(xAxisLeftEdge, yAxisTopEdge)
         lineTo(xAxisRightEdge, yAxisTopEdge)
         lineTo(xAxisRightEdge, yAxisBottomEdge)
@@ -78,7 +78,7 @@ class CustomRectangleCutoutView @JvmOverloads constructor(
             yAxisBottomEdge = height * verticalOffset + qrScannerHeight / 2f
 
             backgroundShape = createBackgroundPath()
-            qrScannerShape = drawQrPath()
+            qrScannerShape = createQrPath()
             backgroundShape.addPath(qrScannerShape)
 
 

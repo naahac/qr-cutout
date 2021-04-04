@@ -13,8 +13,8 @@ import com.natanaelahac.canvas.R
 class CutoutWithRoundedCornersFragment : Fragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_cutout_with_rounded_corners, container, false)

@@ -40,7 +40,7 @@ class CustomRectangleWithCornersCutoutView @JvmOverloads constructor(
     private val frameStrokeWidth = 2.toPx.toFloat()
 
     private val backgroundPaint = Paint().apply {
-        setARGB(80, 0, 0,0)
+        setARGB(80, 0, 0, 0)
     }
 
     private val transparentPaint = Paint().apply {
@@ -54,8 +54,9 @@ class CustomRectangleWithCornersCutoutView @JvmOverloads constructor(
         style = Paint.Style.STROKE
     }
 
-    private lateinit var backgroundShape : Path
-    private lateinit var qrScannerShape : Path
+    private lateinit var backgroundShape: Path
+    private lateinit var qrScannerShape: Path
+    private lateinit var qrScannerCornersShape: Path
 
     private fun createBackgroundPath() = Path().apply {
         lineTo(right.toFloat(), 0f)
@@ -84,27 +85,34 @@ class CustomRectangleWithCornersCutoutView @JvmOverloads constructor(
 
             backgroundShape = createBackgroundPath()
             qrScannerShape = createQrPath()
+            qrScannerCornersShape = createCutoutCornersPath()
             backgroundShape.addPath(qrScannerShape)
 
             drawPath(backgroundShape, backgroundPaint)
             drawPath(qrScannerShape, transparentPaint)
-            drawPath(createCutoutCorners(), framePaint)
+            drawPath(qrScannerCornersShape, framePaint)
         }
     }
 
-    private fun createCutoutCorners() = Path().apply {
+    private fun createCutoutCornersPath() = Path().apply {
+        // Move to start of the top-left edge path
         moveTo(xAxisLeftEdge, yAxisTopEdge + edgeLength)
+        //Draw a line from just bellow the top-left edge to the top-left edge
         lineTo(xAxisLeftEdge, yAxisTopEdge)
+        //Draw a line from the top-left edge to the right
         lineTo(xAxisLeftEdge + edgeLength, yAxisTopEdge)
 
+        // Top-right edge
         moveTo(xAxisRightEdge - edgeLength, yAxisTopEdge)
         lineTo(xAxisRightEdge, yAxisTopEdge)
         lineTo(xAxisRightEdge, yAxisTopEdge + edgeLength)
 
+        // Bottom-right edge
         moveTo(xAxisRightEdge, yAxisBottomEdge - edgeLength)
         lineTo(xAxisRightEdge, yAxisBottomEdge)
         lineTo(xAxisRightEdge - edgeLength, yAxisBottomEdge)
 
+        // Bottom-left edge
         moveTo(xAxisLeftEdge + edgeLength, yAxisBottomEdge)
         lineTo(xAxisLeftEdge, yAxisBottomEdge)
         lineTo(xAxisLeftEdge, yAxisBottomEdge - edgeLength)

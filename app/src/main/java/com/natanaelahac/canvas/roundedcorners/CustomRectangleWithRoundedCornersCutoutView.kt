@@ -40,7 +40,7 @@ class CustomRectangleWithRoundedCornersCutoutView @JvmOverloads constructor(
     private val frameStrokeWidth = 2.toPx.toFloat()
 
     private val backgroundPaint = Paint().apply {
-        setARGB(80, 0, 0,0)
+        setARGB(80, 0, 0, 0)
     }
 
     private val transparentPaint = Paint().apply {
@@ -54,8 +54,9 @@ class CustomRectangleWithRoundedCornersCutoutView @JvmOverloads constructor(
         style = Paint.Style.STROKE
     }
 
-    private lateinit var backgroundShape : Path
-    private lateinit var qrScannerShape : Path
+    private lateinit var backgroundShape: Path
+    private lateinit var qrScannerShape: Path
+    private lateinit var qrScannerCornersShape: Path
 
     private fun createBackgroundPath() = Path().apply {
         lineTo(right.toFloat(), 0f)
@@ -91,11 +92,12 @@ class CustomRectangleWithRoundedCornersCutoutView @JvmOverloads constructor(
 
             backgroundShape = createBackgroundPath()
             qrScannerShape = createQrPath()
+            qrScannerCornersShape = createCutoutWithCorners()
             backgroundShape.addPath(qrScannerShape)
 
             drawPath(backgroundShape, backgroundPaint)
             drawPath(qrScannerShape, transparentPaint)
-            drawPath(createCutoutWithCorners(), framePaint)
+            drawPath(qrScannerCornersShape, framePaint)
         }
     }
 
